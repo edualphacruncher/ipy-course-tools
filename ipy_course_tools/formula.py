@@ -63,10 +63,10 @@ def unary_bracket(
             if formula_suffix:
                 ret_text += f"{op} {eval_formula(formula)}"
             else:
-                ret_text = f"{eval_formula(formula)} {op}"
+                ret_text = f"{eval_formula(formula)} {op}" + ret_text
         else:
             if formula_suffix:
-                ret_text = f"{op} {formula}" + ret_text
+                ret_text += f"{op} {formula}"
             else:
                 ret_text = f"{formula} {op}" + ret_text
 
@@ -119,10 +119,10 @@ def binary_bracket(
             if formula_suffix:
                 ret_text += f"{op} {eval_formula(formula)}"
             else:
-                ret_text = f"{eval_formula(formula)} {op}"
+                ret_text = f"{eval_formula(formula)} {op}" + ret_text
         else:
             if formula_suffix:
-                ret_text += f"{op} {formula}" + ret_text
+                ret_text += f"{op} {formula}"
             else:
                 ret_text = f"{formula} {op}" + ret_text
 
@@ -184,10 +184,10 @@ def n_ary_bracket(
             if formula_suffix:
                 ret_text += f"{op} {eval_formula(formula)}"
             else:
-                ret_text = f"{eval_formula(formula)} {op}"
+                ret_text = f"{eval_formula(formula)} {op}" + ret_text
         else:  # we got latex formula
             if formula_suffix:
-                ret_text = f"{op} {formula}" + ret_text
+                ret_text += f"{op} {formula}"
             else:
                 ret_text = f"{formula} {op}" + ret_text
 
