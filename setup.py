@@ -53,6 +53,7 @@ if __name__ == "__main__":
         maintainer_email="mate.kovacs@alphacruncher.com",
         install_requires=requirements,
         keywords=["ipy_course_tools"],
+        packages=["ipy_course_tools"],
         zip_safe=False,
         classifiers=[
             "Development Status :: 3 - Alpha",
