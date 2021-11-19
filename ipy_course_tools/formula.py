@@ -362,7 +362,7 @@ def linear_hull(
     return n_ary_bracket(
         items,
         formula=formula,
-        prefix="lin",
+        prefix="\\text{lin}",
         lbracket_string="(",
         rbracket_string=")",
         formula_op=formula_op,
