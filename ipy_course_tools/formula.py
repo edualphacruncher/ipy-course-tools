@@ -166,7 +166,7 @@ def n_ary_bracket(
     in_brackets = base_string.format(*items_text)
 
     if subscript is None:
-        ret_text = "{}\left{} in_brackets \\right{} ".format(
+        ret_text = "{}\left{} {} \\right{} ".format(
             prefix, lbracket_string, in_brackets, rbracket_string
         )
     else:
