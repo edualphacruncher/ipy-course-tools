@@ -4,7 +4,7 @@ from IPython.display import Math
 import itertools
 
 
-def show_formula(symbol, value, formula_op="=", , formula_align=False, display=False):
+def show_formula(symbol, value, formula_op="=", formula_align=False, display=False):
     """Pretty print a sympy formula. This embeds the formula expression a LaTeX equation with a proper LHS, making it possible to name matrices, expressions in output, etc.
 
     Args:
@@ -16,7 +16,7 @@ def show_formula(symbol, value, formula_op="=", , formula_align=False, display=F
 
     Returns:
         [str or Math render]: Either LaTeX string or IPython rendering thereof.
-    """ 
+    """
     if formula_align:
         op = f"&{formula_op}"
     else:
@@ -43,7 +43,13 @@ def show_matrix(symbol, matrix, formula_op="=", formula_align=False, display=Fal
     Returns:
         [str or Math render]: Either LaTeX string or IPython rendering thereof.
     """
-    return show_formula(symbol=symbol, value=matrix, formula_op=formula_op, formula_align=formula_align, display=display)
+    return show_formula(
+        symbol=symbol,
+        value=matrix,
+        formula_op=formula_op,
+        formula_align=formula_align,
+        display=display,
+    )
 
 
 def eval_formula(formula, display=False):
