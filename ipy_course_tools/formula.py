@@ -4,6 +4,32 @@ from IPython.display import Math
 import itertools
 
 
+def show_formula(symbol, value, formula_op="=", , formula_align=False, display=False):
+    """Pretty print a sympy formula. This embeds the formula expression a LaTeX equation with a proper LHS, making it possible to name matrices, expressions in output, etc.
+
+    Args:
+        symbol (string): A standard LaTeX string you would like to be on the LHS of a pretty print.
+        matrix (sympy.Matrix): The sympy Matrix object you would like to pretty print.
+        formula_op (str, optional): LaTeX operator symbol. Defaults to "=".
+        formula_align (bool, optional): Whether to add a '&' character for including in align LaTeX environments to the operator symbol. Defaults to False.
+        display (bool, optional): If False, returns LaTeX string output. If True, returns Math rendering of LaTeX string. Defaults to False.
+
+    Returns:
+        [str or Math render]: Either LaTeX string or IPython rendering thereof.
+    """ 
+    if formula_align:
+        op = f"&{formula_op}"
+    else:
+        op = f"{formula_op}"
+
+    ret_text = f"{symbol} {op} {printing.default_latex(value)}"
+
+    if not display:
+        return ret_text
+    else:
+        return Math(ret_text)
+
+
 def show_matrix(symbol, matrix, formula_op="=", formula_align=False, display=False):
     """Pretty print a sympy matrix object. This embeds the Matrix render into a LaTeX equation with a proper LHS, making it possible to name matrices in output, etc.
 
@@ -17,17 +43,7 @@ def show_matrix(symbol, matrix, formula_op="=", formula_align=False, display=Fal
     Returns:
         [str or Math render]: Either LaTeX string or IPython rendering thereof.
     """
-    if formula_align:
-        op = f"&{formula_op}"
-    else:
-        op = f"{formula_op}"
-
-    ret_text = f"{symbol} {op} {printing.default_latex(matrix)}"
-
-    if not display:
-        return ret_text
-    else:
-        return Math(ret_text)
+    return show_formula(symbol=symbol, value=matrix, formula_op=formula_op, formula_align=formula_align, display=display)
 
 
 def eval_formula(formula, display=False):
