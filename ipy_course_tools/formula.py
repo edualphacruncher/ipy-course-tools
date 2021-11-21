@@ -570,7 +570,7 @@ def affine_hull(
 def generate_parametric_poly(degree, symbol="x", coef="a", domain="ZZ", display=True):
     from sympy import parse_expr
 
-    coefs = [Symbol(f"a_{i}", real=True) for i in range(0, degree)]
+    coefs = [Symbol(f"{coef}_{i}", real=True) for i in range(0, degree)]
     expr = ""
     for i in range(0, degree):
         expr += f"+ {coefs[i]}*{symbol}**{i}"
