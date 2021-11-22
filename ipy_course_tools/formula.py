@@ -575,3 +575,20 @@ def generate_parametric_poly(degree, symbol="x", coef="a", domain="ZZ", display=
     for i in range(0, degree):
         expr += f"+ {coefs[i]}*{symbol}**{i}"
     return parse_expr(expr)
+
+
+def show_eigenvects(symbol, eigenvect_list):
+    formulae = []
+    for i in range(0, len(eigenvect_list)):
+        eigenvalue = "{" + str(eigenvect_list[i][0]) + "}"
+        eigenv_mult = eigenvect_list[i][1]
+        eigenvectors = eigenvect_list[i][2]
+        formulae += [
+            show_matrix(
+                "{}_{}".format(symbol, eigenvalue),
+                Matrix([eigenvectors]),
+                display=False,
+                formula_align=True,
+            )
+        ]
+    return eqn_align(formulae, display=True)
